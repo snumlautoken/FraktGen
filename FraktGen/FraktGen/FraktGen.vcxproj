@@ -142,7 +142,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BoxZoom.cpp" />
     <ClCompile Include="FraktGen.cpp" />
+    <ClCompile Include="FraktGeneration.cpp" />
+    <ClCompile Include="FraktGraphics.cpp" />
+    <ClCompile Include="Tile.cpp" />
+    <ClCompile Include="ZoomPan.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BoxZoom.h" />
+    <ClInclude Include="Config.h" />
+    <ClInclude Include="FraktGeneration.h" />
+    <ClInclude Include="FraktGraphics.h" />
+    <ClInclude Include="Tile.h" />
+    <ClInclude Include="ZoomPan.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
