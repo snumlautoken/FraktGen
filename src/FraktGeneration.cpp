@@ -54,10 +54,6 @@ void FraktGeneration::calculateMandel(std::vector<float>* pixels, int lowerHeigh
 				z = z * z + c;
 			}
 
-			float color = 1.0f - (float)iter / maxIter;
-
-			int index = 3 * (i + j);
-
 			palette(pixels, j, i, iter, maxIter);
 		}
 	}
