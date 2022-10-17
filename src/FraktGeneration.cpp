@@ -37,7 +37,7 @@ void FraktGeneration::palette(std::vector<float>* pixels, int x, int y, int iter
 	}
 }
 
-void FraktGeneration::calculateMandel(std::vector<float>* pixels, int lowerHeight, int upperHeight)
+void FraktGeneration::calculateMandel(std::vector<float>* pixels, int lowerHeight, int upperHeight, int maxIter)
 {
 	for (int i = lowerHeight; i < upperHeight; ++i)
 	{
@@ -48,7 +48,6 @@ void FraktGeneration::calculateMandel(std::vector<float>* pixels, int lowerHeigh
 			std::complex<double> z(0, 0);
 			std::complex<double> c(x0, y0);
 			int iter;
-			int maxIter = 1000;
 			for (iter = 0; std::abs(z) < 4 && iter < maxIter; ++iter)
 			{
 				z = z * z + c;
@@ -60,7 +59,7 @@ void FraktGeneration::calculateMandel(std::vector<float>* pixels, int lowerHeigh
 
 }
 
-void FraktGeneration::writeMandel(std::vector<float>& pixels)
+void FraktGeneration::writeMandel(std::vector<float>& pixels, int maxIter)
 {
 	std::vector<std::thread> threadVec;
 
@@ -68,7 +67,7 @@ void FraktGeneration::writeMandel(std::vector<float>& pixels)
 	{
 		int lowerBound = i * windowConf->height / (processor_count * 4);
 		int upperBound = (i + 1) * windowConf->height / (processor_count * 4);
-		threadVec.push_back(std::thread(&FraktGeneration::calculateMandel, this, &pixels, lowerBound, upperBound));
+		threadVec.push_back(std::thread(&FraktGeneration::calculateMandel, this, &pixels, lowerBound, upperBound, maxIter));
 	}
 
 	for (int i = 0; i < processor_count * 4; ++i)

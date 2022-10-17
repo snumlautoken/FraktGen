@@ -117,14 +117,15 @@ void FraktGraphics::init()
 	glEnableVertexAttribArray(texAttrib);
 	glVertexAttribPointer(texAttrib, 2, GL_FLOAT, GL_FALSE, 7 * sizeof(float), (void*)(5 * sizeof(float)));
 
-	fGen.writeMandel(pixels);
+}
+
+void FraktGraphics::run(int maxIter)
+{
+	fGen.writeMandel(pixels, maxIter);
 
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, windowConf.width, windowConf.height, 0, GL_RGB, GL_FLOAT, pixels.data());
 
-}
 
-void FraktGraphics::run()
-{
 	while (!glfwWindowShouldClose(window))
 	{
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
@@ -134,7 +135,7 @@ void FraktGraphics::run()
 		{
 			if (boxHandler.getInput(window, windowConf))
 			{
-				fGen.writeMandel(pixels);
+				fGen.writeMandel(pixels, maxIter);
 				glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, windowConf.width, windowConf.height, 0, GL_RGB, GL_FLOAT, pixels.data());
 			}
 		}

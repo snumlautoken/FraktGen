@@ -12,8 +12,8 @@ private:
 	Config* windowConf;
 	int processor_count = std::thread::hardware_concurrency();
 	void palette(std::vector<float>* pixels, int x, int y, int iter, int maxIter);
-	void calculateMandel(std::vector<float>* pixels, int lowerHeight, int upperHeight);
+	void calculateMandel(std::vector<float>* pixels, int lowerHeight, int upperHeight, int maxIter);
 public:
 	FraktGeneration(Config* wc);
-	void writeMandel(std::vector<float>& pixels);
+	void writeMandel(std::vector<float>& pixels, int maxIter);
 };

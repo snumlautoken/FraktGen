@@ -21,6 +21,6 @@ private:
 public:
 	FraktGraphics(int w, int h);
 	void init();
-	void run();
+	void run(int maxIter);
 	static void mouse_button_callback(GLFWwindow* window, int button, int action, int mods);
 };

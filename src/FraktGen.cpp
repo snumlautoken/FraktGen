@@ -6,9 +6,12 @@
 #include <vector>
 #include <tuple>
 
-int main()
+int main(int argc, char *argv[])
 {
+	int maxIter = 1000;
+	if(argc > 1)
+		maxIter = atoi(argv[1]);
 	FraktGraphics fGr(900, 900);
 	fGr.init();
-	fGr.run();
+	fGr.run(maxIter);
 }
