@@ -1,0 +1,6 @@
+find_package(glfw3 3.3 REQUIRED)
+find_package(OpenGL REQUIRED)
+find_package(GLEW REQUIRED)
+set(CMAKE_BUILD_TYPE release)
+add_executable (FraktGen FraktGen.cpp FraktGeneration.cpp FraktGraphics.cpp BoxZoom.cpp)
+target_link_libraries(FraktGen glfw OpenGL GLEW)
